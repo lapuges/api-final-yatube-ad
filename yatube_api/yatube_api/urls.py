@@ -24,10 +24,26 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('api.urls', namespace='api')),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-    path('api/v1/jwt/create/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/v1/jwt/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/v1/jwt/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    path(
+        'redoc/',
+        schema_view.with_ui('redoc', cache_timeout=0),
+        name='schema-redoc'
+    ),
+    path(
+        'api/v1/jwt/create/',
+        TokenObtainPairView.as_view(),
+        name='token_obtain_pair'
+    ),
+    path(
+        'api/v1/jwt/refresh/',
+        TokenRefreshView.as_view(),
+        name='token_refresh'
+    ),
+    path(
+        'api/v1/jwt/verify/',
+        TokenVerifyView.as_view(),
+        name='token_verify'
+    ),
 ]
 
 if settings.DEBUG:
